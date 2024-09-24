@@ -6,7 +6,7 @@
       [(ngModel)]="campoBusca"
     >
     <button>
-      <img src="assets/imagens/icone-busca.png" alt="Lupa de cor roxa">
+      <img src="assets/imagens/icone-busca.png" alt="Lupa de cor roxa" (click)="buscarLivros()">
     </button>
   </div>
   <p>Busque por assunto, autoria, nome...</p>
@@ -21,7 +21,6 @@
     <img
       class="ilustracao"
       src="../../assets/imagens/ilustracao-estante.png"
-      alt="Ilustração de uma pessoa em pé ao lado de uma estante com livros e plantas"
-      (click)="buscarLivros()">
+      alt="Ilustração de uma pessoa em pé ao lado de uma estante com livros e plantas">
   </div>
 </ng-template>
