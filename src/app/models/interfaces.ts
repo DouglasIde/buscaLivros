@@ -1,11 +1,11 @@
 export interface Book {
-    kind: string;
-    id: string;
-    etag: string;
-    selfLink: string;
-    volumeInfo: VolumeInfo;
-    saleInfo: SaleInfo;
-    accessInfo: AccessInfo;
+    title?: String;
+    authors?: String[];
+    publisher?: String;
+    publisherDate?: String;
+    description?: String;
+    previewLink?: String;
+    thumbnail?: ImageLinks;
 }
 
 export interface VolumeInfo{
@@ -81,4 +81,13 @@ export interface Epub{
 
 export interface Pdf{
     isAvailable: boolean;
+}
+
+export interface Item{
+    VolumeInfo: VolumeInfo;
+}
+
+export interface LivrosResultado{
+    items: Item[];
+    totalItems: number;
 }
