@@ -2,14 +2,14 @@ import { ImageLinks } from "./interfaces";
 
 export class LivroVolumeInfo{
     title?: string;
-    authors?: String[];
-    publisher?: String;
+    authors?: string[];
+    publisher?: string;
     publishedDate?: string | Date;
-    description?: String;
-    previewLink?: String;
+    description?: string;
+    previewLink?: string;
     imageLinks?: {
-        smallThumb: String;
-        thumbnail: String;
+        smallThumb: string;
+        thumbnail: string;
     };
 
     constructor(item){
@@ -19,6 +19,6 @@ export class LivroVolumeInfo{
         this.publishedDate = item.volumeInfo?.publishedDate;
         this.description = item.volumeInfo?.description;
         this.previewLink = item.volumeInfo?.previewLink;
-        this.imageLinks = item.volumeInfo?.imageLinks;
+        this.imageLinks = item.volumeInfo.imageLinks;
     }
 }

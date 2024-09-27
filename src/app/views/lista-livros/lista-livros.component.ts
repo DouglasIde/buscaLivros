@@ -28,23 +28,11 @@ export class ListaLivrosComponent implements OnDestroy{
     })
   }
 
-  livrosResultadoParaLivros(items): Book[]{
-    const livros: Book[] = [];
-
-    items.forEach(item => {
-      livros.push(this.livro = {
-        title: item.volumeInfo?.title,
-        authors: item.volumeInfo?.authors,
-        publisher: item.volumeInfo?.publisher,
-        publishedDate: item.volumeInfo?.publishedDate,
-        description: item.volumeInfo?.description,
-        previewLink: item.volumeInfo?.previewLink,
-        thumbnail: item.volumeInfo?.imageLinks?.thumbnail
+  livrosResultadoParaLivros(items: Item[]): LivroVolumeInfo[]{
+    return items.map(item => {
+      return new LivroVolumeInfo(item);
     })
-  });
-
-    return livros;
-  }
+  };
 
   ngOnDestroy(){
     this.subscription.unsubscribe();

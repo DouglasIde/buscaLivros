@@ -2,7 +2,7 @@ export interface Book {
     title?: string;
     authors?: string[];
     publisher?: string;
-    publishedDate?: string; 
+    publishedDate?: string | Date; 
     description?: string;
     previewLink?: string;
     thumbnail?: ImageLinks;
@@ -42,8 +42,12 @@ export interface Dimensions {
 }
 
 export interface ImageLinks {
-    smallThumb: String;
-    thumbnail: String;
+    smallThumb: string;
+    thumbnail: string;
+    small: string;
+    medium: string;
+    large: string;
+    extraLarge: string;
 }
 
 export interface SaleInfo {
