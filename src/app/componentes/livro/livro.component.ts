@@ -1,14 +1,19 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Book } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'app-livro',
   templateUrl: './livro.component.html',
   styleUrls: ['./livro.component.css']
 })
-export class LivroComponent {
+export class LivroComponent implements OnInit {
 
-  @Input() livro: Object;
+  @Input() livro: Book;
   modalAberto: boolean;
+
+  ngOnInit(){
+    console.log(this.livro);
+  }
 
   onModalChange(evento: boolean) {
     this.modalAberto = evento;

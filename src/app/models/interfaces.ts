@@ -2,31 +2,31 @@ export interface Book {
     title?: String;
     authors?: String[];
     publisher?: String;
-    publisherDate?: String;
+    publishedDate?: String;
     description?: String;
     previewLink?: String;
     thumbnail?: ImageLinks;
 }
 
 export interface VolumeInfo{
-    title: String;
-    authors: String[];
-    publisher: String;
-    publisherDate: String;
-    description: String;
+    title: string;
+    authors: string[];
+    publisher: string;
+    publishedDate: string;
+    description: string;
     industryIdentifiers: IndustryIdentifier[];
     pageCount: number;
     dimensions: Dimensions;
-    printType: String;
-    mainCategory: String;
-    categories: String[];
+    printType: string;
+    mainCategory: string;
+    categories: string[];
     averageRating: number;
     ratingsCount: number;
-    contentVersion: String;
+    contentVersion: string;
     imageLinks: ImageLinks;
-    language: String;
-    infoLink: String;
-    canonicalVolumeLink: String;
+    language: string;
+    infoLink: string;
+    canonicalVolumeLink: string;
 }
 
 export interface IndustryIdentifier {
@@ -43,10 +43,6 @@ export interface Dimensions {
 export interface ImageLinks {
     smallThumb: String;
     thumbnail: String;
-    small: String;
-    medium: String;
-    large: String;
-    extraLarge: String;
 }
 
 export interface SaleInfo {
@@ -69,25 +65,13 @@ export interface AccessInfo {
     embeddable: boolean;
     publicDomain: boolean;
     textoToSpeechPermission: String;
-    epub: Epub;
-    pdf: Pdf;
     accessViewStatus: String;
 }
 
-export interface Epub{
-    isAvailable: boolean;
-    acsTokenLink: string;
-}
-
-export interface Pdf{
-    isAvailable: boolean;
-}
-
 export interface Item{
-    VolumeInfo: VolumeInfo;
+    volumeInfo: VolumeInfo;
 }
 
 export interface LivrosResultado{
     items: Item[];
-    totalItems: number;
 }
