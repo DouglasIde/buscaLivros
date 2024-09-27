@@ -1,10 +1,10 @@
 import { ImageLinks } from "./interfaces";
 
 export class LivroVolumeInfo{
-    title?: String;
+    title?: string;
     authors?: String[];
     publisher?: String;
-    publishedDate?: String;
+    publishedDate?: string | Date;
     description?: String;
     previewLink?: String;
     imageLinks?: {

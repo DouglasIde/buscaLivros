@@ -9,11 +9,13 @@ import { LivroVolumeInfo } from 'src/app/models/livroVolumeInfo';
 })
 export class LivroComponent implements OnInit {
 
-  @Input() livro: Book;
+  @Input() livro: LivroVolumeInfo;
   modalAberto: boolean;
 
-  ngOnInit(){
-    console.log(this.livro);
+  ngOnInit(): void {
+    if (typeof this.livro.publishedDate === 'string') {
+      this.livro.publishedDate = new Date(this.livro.publishedDate);
+    }
   }
 
   onModalChange(evento: boolean) {

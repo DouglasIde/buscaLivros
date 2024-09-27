@@ -1,10 +1,10 @@
 export interface Book {
-    title?: String;
-    authors?: String[];
-    publisher?: String;
-    publishedDate?: String;
-    description?: String;
-    previewLink?: String;
+    title?: string;
+    authors?: string[];
+    publisher?: string;
+    publishedDate?: string; 
+    description?: string;
+    previewLink?: string;
     thumbnail?: ImageLinks;
 }
 
