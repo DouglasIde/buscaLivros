@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/interfaces';
+import { LivroVolumeInfo } from 'src/app/models/livroVolumeInfo';
 
 @Component({
   selector: 'app-livro',
