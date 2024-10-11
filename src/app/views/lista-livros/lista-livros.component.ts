@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { Item } from './../../models/interfaces';
 import { Component } from '@angular/core';
-import { debounceTime, filter, map, switchMap, tap } from 'rxjs';
+import { catchError, debounceTime, filter, map, switchMap, tap, throwError } from 'rxjs';
 import { LivroVolumeInfo } from 'src/app/models/livroVolumeInfo';
 import { LivroService } from 'src/app/service/livro.service';
 
@@ -23,8 +23,12 @@ export class ListaLivrosComponent {
     switchMap((valorDigitado) => this.service.buscar(valorDigitado)),
     tap((retornoAPI) => console.log(retornoAPI)),
     tap(() => console.log("Requisição ao servidor")),
-    map((items) => this.livrosResultadoParaLivros(items))
-  );
+    map((items) => this.livrosResultadoParaLivros(items)),
+    catchError((erro) => {
+      console.log(erro);
+      return throwError(() => new Error('Ops!! ocorreu um erro'));
+    }
+  ));
   
   livrosResultadoParaLivros(items: Item[]): LivroVolumeInfo[]{
     return items.map(item => {
