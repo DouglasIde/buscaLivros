@@ -25,7 +25,12 @@ export class ListaLivrosComponent implements OnDestroy{
     filter((valorDigitado) => valorDigitado.length >= 2),
     tap(() => console.log("Fluxo inicial")),
     switchMap((valorDigitado) => this.service.buscar(valorDigitado)),
-    tap(retornoAPI => this.quantidadeDeLivros = retornoAPI.totalItems ? retornoAPI.totalItems.toString() : '0'),
+    tap({
+      next: (retornoAPI) => {
+        this.livrosResultado = retornoAPI;
+        this.quantidadeDeLivros = retornoAPI.totalItems ? retornoAPI.totalItems.toString() : '0';
+      }
+    })
   );
   
   livrosResultadoParaLivros(items): Book[]{

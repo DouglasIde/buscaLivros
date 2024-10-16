@@ -16,7 +16,7 @@
   </div>
 
   <div class="resultados" *ngIf="livrosEncontrados$ | async">
-  {{ livrosResultado.totalItems | async }} resultados encontrados
+  {{ livrosResultado.totalItems || 0 }} resultados encontrados
   </div>
 
 <div class="container-card" *ngIf="(livrosEncontrados$ | async)?.items as listaLivros; else telaInicial">
