@@ -15,11 +15,16 @@
     {{ mensagemErro }}
   </div>
 
-<div class="container-card" *ngIf="livrosEncontrados$ | async as listaLivros, else telaInicial">
+  <div class="resultados" *ngIf="livrosEncontrados$ | async">
+  {{ livrosResultado.totalItems | async }} resultados encontrados
+  </div>
+
+<div class="container-card" *ngIf="(livrosEncontrados$ | async)?.items as listaLivros; else telaInicial">
   <div *ngFor="let livro of listaLivros">
-    <app-livro [livro]="livro"></app-livro>
+    <app-livro [livro]="livro.volumeInfo"></app-livro>
   </div>
 </div>
+
 <ng-template #telaInicial>
   <div class="imagens">
     <h1 class="titulo">Busque o livro <br> que quiser na <br> nossa estante!</h1>

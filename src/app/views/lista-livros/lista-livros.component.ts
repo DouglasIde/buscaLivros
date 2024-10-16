@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms';
-import { Item } from './../../models/interfaces';
-import { Component } from '@angular/core';
-import { catchError, debounceTime, EMPTY, filter, map, switchMap, tap, throwError } from 'rxjs';
+import { Book, Item, LivrosResultado, VolumeInfo, ImageLinks } from './../../models/interfaces';
+import { Component, OnDestroy } from '@angular/core';
+import { catchError, debounceTime, EMPTY, filter, map, Subscription, switchMap, tap, throwError } from 'rxjs';
 import { LivroVolumeInfo } from 'src/app/models/livroVolumeInfo';
 import { LivroService } from 'src/app/service/livro.service';
 
@@ -10,10 +10,13 @@ import { LivroService } from 'src/app/service/livro.service';
   templateUrl: './lista-livros.component.html',
   styleUrls: ['./lista-livros.component.css']
 })
-export class ListaLivrosComponent {
+export class ListaLivrosComponent implements OnDestroy{
 
   campoBusca = new FormControl();
   mensagemErro = '';
+  livrosResultado: LivrosResultado;
+  quantidadeDeLivros: string = '';
+  subscription: Subscription;
 
   constructor(private service: LivroService) { }
 
@@ -22,18 +25,29 @@ export class ListaLivrosComponent {
     filter((valorDigitado) => valorDigitado.length >= 2),
     tap(() => console.log("Fluxo inicial")),
     switchMap((valorDigitado) => this.service.buscar(valorDigitado)),
-    tap((retornoAPI) => console.log(retornoAPI)),
-    tap(() => console.log("Requisição ao servidor")),
-    map((items) => this.livrosResultadoParaLivros(items)),
-    catchError(() => {
-      this.mensagemErro = 'Ops!! ocorreu um erro. Recarregue a página e tente novamente.'
-      return EMPTY;
-    }
-  ));
+    tap(retornoAPI => this.quantidadeDeLivros = retornoAPI.totalItems ? retornoAPI.totalItems.toString() : '0'),
+  );
   
-  livrosResultadoParaLivros(items: Item[]): LivroVolumeInfo[]{
+  livrosResultadoParaLivros(items): Book[]{
     return items.map(item => {
-      return new LivroVolumeInfo(item);
-    })
-  };
+      const VolumeInfo = item.volumeInfo;
+      return {
+        title: VolumeInfo.title,
+        authors: VolumeInfo.authors ? VolumeInfo.authors.map(author => author.toString()) : [],
+        publisher: VolumeInfo.publisher ? VolumeInfo.publisher.toString() : '',
+        publishedDate: VolumeInfo.publishedDate instanceof Date ? VolumeInfo.publishedDate.toString() : VolumeInfo.publishedDate,
+        description: VolumeInfo.description,
+        pageCount: VolumeInfo.pageCount,
+        categories: VolumeInfo.categories ? VolumeInfo.categories.map(category => category.toString()) : [],
+        averageRating: VolumeInfo.averageRating,
+        imageLinks: VolumeInfo.imageLinks && VolumeInfo.ImageLinks.thumbnail ? {thumbnail: VolumeInfo.imageLinks.thumbnail.toString()} : undefined
+      } as Book;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 }

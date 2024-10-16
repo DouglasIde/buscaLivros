@@ -14,7 +14,7 @@ export interface VolumeInfo{
     publisher: string;
     publishedDate: string;
     description: string;
-    previewLink: String;
+    previewLink: string;
     industryIdentifiers: IndustryIdentifier[];
     pageCount: number;
     dimensions: Dimensions;
@@ -78,5 +78,6 @@ export interface Item{
 }
 
 export interface LivrosResultado{
+    totalItems: any;
     items: Item[];
 }
