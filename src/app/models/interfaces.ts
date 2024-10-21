@@ -36,9 +36,9 @@ export interface IndustryIdentifier {
 }
 
 export interface Dimensions {
-    height: String;
-    width: String;
-    thickness: String;
+    height: string;
+    width: string;
+    thickness: string;
 }
 
 export interface ImageLinks {
@@ -51,12 +51,12 @@ export interface ImageLinks {
 }
 
 export interface SaleInfo {
-    country: String;
-    saleability: String;
+    country: string;
+    saleability: string;
     isEbook: boolean;
     listPrice: Price;
     retailPrice: Price;
-    buyLink: String;
+    buyLink: string;
 }
 
 export interface Price {

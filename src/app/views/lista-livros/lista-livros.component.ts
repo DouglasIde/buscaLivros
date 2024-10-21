@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { Book, Item, LivrosResultado, VolumeInfo, ImageLinks } from './../../models/interfaces';
 import { Component, OnDestroy } from '@angular/core';
-import { catchError, debounceTime, EMPTY, filter, map, Subscription, switchMap, tap, throwError } from 'rxjs';
+import { catchError, debounceTime, EMPTY, filter, map, of, Subscription, switchMap, tap, throwError } from 'rxjs';
 import { LivroVolumeInfo } from 'src/app/models/livroVolumeInfo';
 import { LivroService } from 'src/app/service/livro.service';
 
@@ -29,7 +29,12 @@ export class ListaLivrosComponent implements OnDestroy{
       next: (retornoAPI) => {
         this.livrosResultado = retornoAPI;
         this.quantidadeDeLivros = retornoAPI.totalItems ? retornoAPI.totalItems.toString() : '0';
-      }
+      },
+      error: (error) => console.error(error)
+    }),
+    catchError(() => {
+      this.mensagemErro = 'Erro ao buscar livros. Tente novamente mais tarde.';
+      return of({ totalItems: 0, items: [] });
     })
   );
   

@@ -1,7 +1,7 @@
 import { LivrosResultado, Item } from './../models/interfaces';
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, tap, of } from 'rxjs';
 
 
 @Injectable({
@@ -18,10 +18,11 @@ export class LivroService {
       tap(returnAPI => console.log("Fluxo do TAP: ", returnAPI)),
       map(resultado => resultado || {totalItems: 0, items: [] }),
       tap(resultado => console.log("Fluxo após o MAP: ", resultado)),
-      catchError((erro: HttpErrorResponse) => {
-        console.error('Erro ao buscar livros:', erro);
+      catchError(error => {
+        console.error('Erro ao buscar livros: ', error)
         return of({totalItems: 0, items: []});
-      })
-    );
-  }
+          })
+        );
+      }
 }
+
