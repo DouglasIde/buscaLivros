@@ -15,3 +15,8 @@
   <img src="https://img.shields.io/static/v1?label=Markup&message=HTML5&color=B7178C&style=for-the-badge&logo=html5" alt="Markup: HTML5" />
   <img src="https://img.shields.io/static/v1?label=Library&message=RxJS&color=B7178C&style=for-the-badge&logo=reactivex" alt="Library: RxJS" />
 </div>
+
+<h1>📌Description</h1>
+<p>This project was developed during an Alura course, with the aim of practicing the use of the RxJS library. During the process, I explored various features of the library, focusing on making the code more readable, simple and easy to maintain.<br><br>
+The application allows the user to search for books and view the results in the form of interactive cards, containing all the relevant information about the selected titles. The aim is to offer a fast and efficient search experience, making navigation more professional and intuitive for the user.
+</p>
