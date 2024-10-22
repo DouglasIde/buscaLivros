@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { Book, Item, LivrosResultado, VolumeInfo, ImageLinks } from './../../models/interfaces';
-import { Component, OnDestroy } from '@angular/core';
-import { catchError, debounceTime, EMPTY, filter, map, of, Subscription, switchMap, tap, throwError } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { catchError, debounceTime, distinctUntilChanged, EMPTY, filter, map, of, Subscription, switchMap, tap, throwError } from 'rxjs';
 import { LivroVolumeInfo } from 'src/app/models/livroVolumeInfo';
 import { LivroService } from 'src/app/service/livro.service';
 
@@ -22,6 +22,7 @@ export class ListaLivrosComponent implements OnDestroy{
 
   livrosEncontrados$ = this.campoBusca.valueChanges.pipe(
     debounceTime(300),
+    distinctUntilChanged(),
     filter((valorDigitado) => valorDigitado.length >= 2),
     tap(() => console.log("Fluxo inicial")),
     switchMap((valorDigitado) => this.service.buscar(valorDigitado)),
