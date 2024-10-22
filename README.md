@@ -23,8 +23,10 @@
   <li><a href="#development">💻 Development</a></li>
   <li><a href="#use">🚀 How to Use</a></li>
   <li><a href="#preview">🎥 Preview</a></li>
- 
-</ul>
+  <li><a href="#tech">🌐 Technologies</li>
+  <li><a href="#references">📖 References</li>
+  <li><a href="#contribution">🤝 Contribution</li>
+</ul><br>
 
 <h1 id="description">📌 Description</h1>
 <p>This project was developed during an Alura course, with the aim of practicing the use of the RxJS library. During the process, I explored various features of the library, focusing on making the code more readable, simple and easy to maintain.<br><br>
@@ -47,13 +49,19 @@ cd project-diretory
 npm install
 </pre>
 
+<p>4. The project uses RxJS. To install, run the command below: </p>
+<pre>
+npm install rxjs
+</pre>
+
 <h1 id="use">🚀 How to Use</h1>
-<p>Para iniciar o projeto, execute no terminal: </p>
+<p>To start the project, run it in the terminal: </p>
 <pre>
 ng s --o
 </pre>
 
-<p>Acesso no seu navegador para ver a aplicação em execução.<pre>http://localhost:4200</pre></p>
+<p>Access in your browser to see the application running:
+<pre>http://localhost:4200</pre></p>
 
 <h1 id="development">💻 Development</h1>
 <p>If you would like to know a little more about the development of the project, here is a summary of the main points covered: </p>
@@ -69,3 +77,15 @@ ng s --o
 <h1 id="preview">🎥 Preview</h1>
 <p>A demonstration of what the system looks like, according to the console, how many requests will appear to the user.</p>
 <img src="https://github.com/DouglasIde/buscaLivros/blob/main/README/gifs/RXJSAngular_douglas.gif" alt="A preview of the project">
+
+<h1 id="tech">🌐 Technologies</h1>
+<li><a href="https://angular.dev/">Angular</a></li>
+<li><a href="https://www.typescriptlang.org/">TypeScript</a></li>
+
+<h1 id="references">📖 References</h1>
+<li><a href="https://angular.dev/overview">Angular documentation</a></li>
+<li><a href="https://rxjs.dev/">RxJS documentation</a></li>
+<li><a href="https://developers.google.com/books/docs/v1/libraries?hl=pt-br">Google Books API</a></li>
+
+<h1 id="contribution">🤝 Contribution</h1>
+<p>Contributions are welcome! Feel free to open an issue or send a pull request.</p>
