@@ -1,8 +1,6 @@
 <section *ngIf="statusModal" class="container {{ esconderScroll() }}">
   <div class="card">
-    <img class="imagem" src="{{ livro != undefined ? livro
-      : 'assets/imagens/capa-indisponivel.png'
-    }}" alt="Capa do livro">
+    <img class="imagem" [src]="livro?.thumbnail || 'assets/imagens/capa-indisponivel.png'" alt="Capa do livro">
     <div class="info-card">
       <p class="titulo">{{ livro.title }}</p>
       <p class="informacoes">Autoria:</p>

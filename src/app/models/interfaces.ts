@@ -5,7 +5,7 @@ export interface Book {
     publishedDate?: string | Date; 
     description?: string;
     previewLink?: string;
-    thumbnail?: ImageLinks;
+    thumbnail?: ImageLinks | string;
 }
 
 export interface VolumeInfo{
@@ -42,7 +42,7 @@ export interface Dimensions {
 }
 
 export interface ImageLinks {
-    smallThumb: string;
+    smallThumbnail: string;
     thumbnail: string;
     small: string;
     medium: string;
